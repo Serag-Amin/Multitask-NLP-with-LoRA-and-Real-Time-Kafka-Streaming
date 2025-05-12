@@ -1,0 +1,28 @@
+# Core NLP and modeling
+transformers>=4.38.0
+datasets>=2.18.0
+tokenizers>=0.14.0
+
+# LoRA / PEFT
+peft>=0.8.0
+
+# Deep learning
+torch>=2.1.0
+scikit-learn>=1.3.0
+
+# PyTorch Lightning (if using Lightning for training)
+pytorch-lightning>=2.2.0
+
+# Data and visualization
+pandas
+numpy
+matplotlib
+seaborn
+
+wandb
+
+# Optional: Hugging Face Hub for uploading models or datasets
+huggingface_hub
+
+# Optional: Jupyter support for notebooks
+jupyterlab
