@@ -3,7 +3,6 @@ from transformers import RobertaTokenizer
 from safetensors.torch import load_file
 import os
 
-# Import your model
 from models.multitask_model import MultiTaskModel, task_name_to_id
 
 class MultitaskModelWrapper:
