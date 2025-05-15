@@ -12,32 +12,30 @@ import numpy as np
 
 #from src.utils import NLPDataCollator, MultitaskTrainer  # Importing the custom classes
 
-
 # Training arguments setup
 training_args = TrainingArguments(
-    output_dir='./results_shuffled_deep128_heads_r16_seq128_3e-5_roberta_newData',               # Output directory
-    eval_strategy="epoch",                # Evaluate every epoch
-    learning_rate=3e-5,                   # Learning rate
-    per_device_train_batch_size=32,       # Training batch size
-    per_device_eval_batch_size=128,        # Evaluation batch size
-    num_train_epochs=5,                   # Number of epochs
-    weight_decay=0.01,                    # Weight decay
-    logging_dir='./logs',                 # Logging directory
-    save_strategy="epoch",                # Save checkpoint every epoch
-    logging_steps=10,                     # Log every 10 steps
-    load_best_model_at_end=True,          # Load the best model at the end
+    output_dir='./results_shuffled_deep128_heads_r16_seq128_3e-5_roberta_newData',               
+    eval_strategy="epoch",                
+    learning_rate=3e-5,                   
+    per_device_train_batch_size=32,      
+    per_device_eval_batch_size=128,        
+    num_train_epochs=5,                   
+    weight_decay=0.01,                    
+    logging_dir='./logs',                 
+    save_strategy="epoch",                
+    logging_steps=10,                     
+    load_best_model_at_end=True,          
     metric_for_best_model="eval_loss",
     fp16=True,
-    gradient_accumulation_steps=1,    # Metric to monitor for early stopping and model selection
+    gradient_accumulation_steps=1,    
 )
 
 tokenizer = AutoTokenizer.from_pretrained("roberta-base")
 
-task_names = ["sentiment", "hate", "emotion"]  #["sentiment", "hate", "emotion"]  
+task_names = ["sentiment", "hate", "emotion"] 
 
 dataset, task_label_maps = prepare_multitask_datasets(task_names)
 
-# Prepare train and evaluation datasets
 train_dataset = dataset["train"]
 eval_dataset = dataset["validation"]
 
@@ -82,12 +80,6 @@ def data_collator(batch, tokenizer):
     }
 
 collate_fn = lambda batch: data_collator(batch, tokenizer)
-# class CustomTrainer(Trainer):
-#     def compute_loss(self, model, inputs, return_outputs=False):
-#         labels = inputs.pop("labels")  # remove 'labels' from inputs
-#         outputs = model(**inputs, labels=labels)  # now manually pass it
-#         loss = outputs["loss"]
-#         return (loss, outputs) if return_outputs else loss
 
 trainer = Trainer(
     model=model,

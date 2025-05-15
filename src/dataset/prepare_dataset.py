@@ -15,7 +15,6 @@ id2label = {v: k for k, v in label2id.items()}
 def resolve_label(label_list: List[str]) -> int:
     """
     Resolve a list of labels to a single integer class.
-    Priority: hate > offensive > neither
     """
     if not label_list:
         return label2id["neither"]

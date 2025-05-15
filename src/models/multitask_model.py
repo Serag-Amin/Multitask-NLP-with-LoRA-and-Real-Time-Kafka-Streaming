@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 from transformers import BertModel, BertConfig, RobertaTokenizer, RobertaModel, RobertaConfig, PretrainedConfig
 from transformers.modeling_outputs import SequenceClassifierOutput
-from peft import LoraConfig, get_peft_model, LoraModel
+from peft import LoraConfig, LoraModel
 
 task_name_to_id = {"sentiment": 0, "hate": 1, "emotion": 2}
 
