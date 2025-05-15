@@ -1,4 +1,4 @@
-# this_studio
+# MultiTaskNLP-Studio
 
 ## Overview
 
@@ -41,7 +41,11 @@ LICENSE                  # MIT License
    ```bash
    pip install -r requirements.txt
    ```
-3. (Optional) Set up Kafka and Zookeeper (see `app/kafka_setup.py`).
+3. Download the pre-trained model:
+   - Visit [RoBERTa_Multitask](https://huggingface.co/SeragAmin/RoBERTa_Multitask/tree/main)
+   - Download `model.safetensors` and place it in the `results_shuffled_deep128_heads_r16_seq128_3e-5_roberta_newData/checkpoint-21470/` directory
+   - Note: The model is not currently compatible with Hugging Face's model loader. Use the provided `model_wrapper.py` for loading and inference.
+4. (Optional) Set up Kafka and Zookeeper (see `app/kafka_setup.py`).
 
 ## Usage
 ### Model Training
@@ -78,3 +82,4 @@ MIT License (see LICENSE)
 - [LoRA/PEFT](https://github.com/huggingface/peft)
 - [Streamlit](https://streamlit.io/)
 - [Kafka](https://kafka.apache.org/)
+- [Lightning AI](https://lightning.ai/)
