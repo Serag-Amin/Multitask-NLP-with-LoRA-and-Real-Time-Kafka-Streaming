@@ -50,7 +50,6 @@ class MultitaskModelWrapper:
         if task_name not in self.task_name_to_id:
             raise ValueError(f"Invalid task: {task_name}")
             
-        # Tokenize input
         inputs = self.tokenizer(
             text, 
             return_tensors="pt", 
